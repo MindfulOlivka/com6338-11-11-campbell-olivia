@@ -9,7 +9,15 @@ const pipe = (...fns) => firstArg => fns.reduce((returnValue, fn) => fn(returnVa
 const makeTag = tag => str => `<${tag}>${str}</${tag}>`
 
 // complete this function
-const makePoemHTML = () => {}
+const makePoemHTML = (poemData) => {
+  const [{ author, lines, title }] = poemData;
+
+  const poemTitle = makeTag("h2")(title);
+  const authorName = pipe(makeTag("em"), makeTag("h3"))(`by ${author}`);
+
+
+};
+
 
 // attach a click event to #get-poem
 getPoemBtn.onclick = async function() {
