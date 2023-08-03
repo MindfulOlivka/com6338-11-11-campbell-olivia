@@ -15,7 +15,14 @@ const makePoemHTML = (poemData) => {
   const poemTitle = makeTag("h2")(title);
   const authorName = pipe(makeTag("em"), makeTag("h3"))(`by ${author}`);
 
+  const lineSplit = (str) => str.split("<br><br>");
+  const lineJoin = (arr) => arr.join("<br>");
 
+  const paragraph = makeTag("p");
+  const paragraphLines = pipe(lineJoin, lineSplit);
+  const stanzas = paragraphLines(lines).map(paragraph);
+
+  return `${poemTitle}${authorName}${stanzas.join("")}`;
 };
 
 
